@@ -16,6 +16,8 @@ type TemporalService interface {
 	GetWorkflowDetails(ctx context.Context, params models.GetWorkflowDetailsParams) (models.WorkflowDetailsResponse, error)
 	TerminateWorkflow(ctx context.Context, params models.TerminateWorkflowParams) error
 	CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error
+	SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error
+	QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)
 	Close(ctx context.Context)
 }
 
@@ -79,4 +81,12 @@ func (ts *temporalService) TerminateWorkflow(ctx context.Context, params models.
 
 func (ts *temporalService) CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error {
 	return ts.client.CancelWorkflow(ctx, params)
+}
+
+func (ts *temporalService) SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error {
+	return ts.client.SignalWorkflow(ctx, params)
+}
+
+func (ts *temporalService) QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error) {
+	return ts.client.QueryWorkflow(ctx, params)
 }

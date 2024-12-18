@@ -3,6 +3,7 @@ package models
 import (
 	v1 "go.temporal.io/api/common/v1"
 	historypb "go.temporal.io/api/history/v1"
+	"go.temporal.io/sdk/client"
 )
 
 type WorkflowResponse struct {
@@ -35,4 +36,8 @@ type Event struct {
 type ListWorkflowsResponse struct {
 	Workflows     []WorkflowExecutionDetails
 	NextPageToken []byte
+}
+
+type QueryWorkflowResponse struct {
+	client.QueryWorkflowWithOptionsResponse
 }

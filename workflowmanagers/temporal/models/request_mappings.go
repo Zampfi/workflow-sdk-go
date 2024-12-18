@@ -26,3 +26,9 @@ func (s *ListWorkflowsParams) ToTemporalListWorkflowsRequest() *workflowservice.
 	copier.Copy(request, s)
 	return request
 }
+
+func (s *QueryWorkflowParams) ToTemporalQueryWorkflowWithOptionsRequest() *client.QueryWorkflowWithOptionsRequest {
+	request := &client.QueryWorkflowWithOptionsRequest{}
+	copier.Copy(&request, s)
+	return request
+}

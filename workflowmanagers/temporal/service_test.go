@@ -143,3 +143,30 @@ func (s *temporalServiceTestSuite) TestTemporalService_CancelWorkflow() {
 	err := s.temporalService.CancelWorkflow(ctx, params)
 	s.NoError(err)
 }
+
+func (s *temporalServiceTestSuite) TestTemporalService_SignalWorkflow() {
+	ctx := context.Background()
+	params := models.SignalWorkflowParams{
+		WorkflowID: "wid",
+		RunID:      "rid",
+		SignalName: "signal",
+	}
+
+	s.client.EXPECT().SignalWorkflow(ctx, params).Return(nil)
+	err := s.temporalService.SignalWorkflow(ctx, params)
+	s.NoError(err)
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_QueryWorkflow() {
+	ctx := context.Background()
+	params := models.QueryWorkflowParams{
+		WorkflowID: "wid",
+		RunID:      "rid",
+	}
+
+	s.client.EXPECT().QueryWorkflow(ctx, params).Return(models.QueryWorkflowResponse{}, nil)
+	resp, err := s.temporalService.QueryWorkflow(ctx, params)
+
+	s.NoError(err)
+	s.Equal(resp, models.QueryWorkflowResponse{})
+}

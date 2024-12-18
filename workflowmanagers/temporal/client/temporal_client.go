@@ -138,3 +138,18 @@ func (tc *TemporalClient) TerminateWorkflow(ctx context.Context, params models.T
 func (tc *TemporalClient) CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error {
 	return tc.baseTemporalClient.CancelWorkflow(ctx, params.WorkflowID, params.RunID)
 }
+
+func (tc *TemporalClient) SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error {
+	return tc.baseTemporalClient.SignalWorkflow(ctx, params.WorkflowID, params.RunID, params.SignalName, params.Arg)
+}
+
+func (tc *TemporalClient) QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error) {
+	queryResponse, err := tc.baseTemporalClient.QueryWorkflowWithOptions(ctx, params.ToTemporalQueryWorkflowWithOptionsRequest())
+	if err != nil {
+		return models.QueryWorkflowResponse{}, err
+	}
+
+	response := models.QueryWorkflowResponse{}
+	response.FromQueryWorkflowWithOptionsResponse(queryResponse)
+	return response, nil
+}

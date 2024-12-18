@@ -1,6 +1,8 @@
 package models
 
 import (
+	commonpb "go.temporal.io/api/common/v1"
+	enumspb "go.temporal.io/api/enums/v1"
 	"go.temporal.io/sdk/client"
 )
 
@@ -41,4 +43,20 @@ type TerminateWorkflowParams struct {
 	RunID      string
 	Reason     string
 	Details    []interface{}
+}
+
+type SignalWorkflowParams struct {
+	WorkflowID string
+	RunID      string
+	SignalName string
+	Arg        interface{}
+}
+
+type QueryWorkflowParams struct {
+	WorkflowID           string
+	RunID                string
+	QueryType            string
+	Args                 []interface{}
+	QueryRejectCondition enumspb.QueryRejectCondition
+	Header               *commonpb.Header
 }

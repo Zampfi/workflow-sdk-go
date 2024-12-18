@@ -14,5 +14,7 @@ type Client interface {
 	GetWorkflowDetails(ctx context.Context, params models.GetWorkflowDetailsParams) (models.WorkflowDetailsResponse, error)
 	TerminateWorkflow(ctx context.Context, params models.TerminateWorkflowParams) error
 	CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error
+	SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error
+	QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)
 	Close(ctx context.Context)
 }

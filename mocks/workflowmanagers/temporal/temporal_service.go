@@ -22,6 +22,53 @@ func (_m *MockTemporalService) EXPECT() *MockTemporalService_Expecter {
 	return &MockTemporalService_Expecter{mock: &_m.Mock}
 }
 
+// CancelWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockTemporalService) CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error {
+	ret := _m.Called(ctx, params)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CancelWorkflow")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, models.CancelWorkflowParams) error); ok {
+		r0 = rf(ctx, params)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// MockTemporalService_CancelWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CancelWorkflow'
+type MockTemporalService_CancelWorkflow_Call struct {
+	*mock.Call
+}
+
+// CancelWorkflow is a helper method to define mock.On call
+//   - ctx context.Context
+//   - params models.CancelWorkflowParams
+func (_e *MockTemporalService_Expecter) CancelWorkflow(ctx interface{}, params interface{}) *MockTemporalService_CancelWorkflow_Call {
+	return &MockTemporalService_CancelWorkflow_Call{Call: _e.mock.On("CancelWorkflow", ctx, params)}
+}
+
+func (_c *MockTemporalService_CancelWorkflow_Call) Run(run func(ctx context.Context, params models.CancelWorkflowParams)) *MockTemporalService_CancelWorkflow_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(models.CancelWorkflowParams))
+	})
+	return _c
+}
+
+func (_c *MockTemporalService_CancelWorkflow_Call) Return(_a0 error) *MockTemporalService_CancelWorkflow_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MockTemporalService_CancelWorkflow_Call) RunAndReturn(run func(context.Context, models.CancelWorkflowParams) error) *MockTemporalService_CancelWorkflow_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Close provides a mock function with given fields: ctx
 func (_m *MockTemporalService) Close(ctx context.Context) {
 	_m.Called(ctx)
@@ -326,6 +373,100 @@ func (_c *MockTemporalService_ListWorkflows_Call) Return(_a0 models.ListWorkflow
 }
 
 func (_c *MockTemporalService_ListWorkflows_Call) RunAndReturn(run func(context.Context, models.ListWorkflowsParams) (models.ListWorkflowsResponse, error)) *MockTemporalService_ListWorkflows_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SignalWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockTemporalService) SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error {
+	ret := _m.Called(ctx, params)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SignalWorkflow")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, models.SignalWorkflowParams) error); ok {
+		r0 = rf(ctx, params)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// MockTemporalService_SignalWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SignalWorkflow'
+type MockTemporalService_SignalWorkflow_Call struct {
+	*mock.Call
+}
+
+// SignalWorkflow is a helper method to define mock.On call
+//   - ctx context.Context
+//   - params models.SignalWorkflowParams
+func (_e *MockTemporalService_Expecter) SignalWorkflow(ctx interface{}, params interface{}) *MockTemporalService_SignalWorkflow_Call {
+	return &MockTemporalService_SignalWorkflow_Call{Call: _e.mock.On("SignalWorkflow", ctx, params)}
+}
+
+func (_c *MockTemporalService_SignalWorkflow_Call) Run(run func(ctx context.Context, params models.SignalWorkflowParams)) *MockTemporalService_SignalWorkflow_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(models.SignalWorkflowParams))
+	})
+	return _c
+}
+
+func (_c *MockTemporalService_SignalWorkflow_Call) Return(_a0 error) *MockTemporalService_SignalWorkflow_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MockTemporalService_SignalWorkflow_Call) RunAndReturn(run func(context.Context, models.SignalWorkflowParams) error) *MockTemporalService_SignalWorkflow_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// TerminateWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockTemporalService) TerminateWorkflow(ctx context.Context, params models.TerminateWorkflowParams) error {
+	ret := _m.Called(ctx, params)
+
+	if len(ret) == 0 {
+		panic("no return value specified for TerminateWorkflow")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, models.TerminateWorkflowParams) error); ok {
+		r0 = rf(ctx, params)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// MockTemporalService_TerminateWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TerminateWorkflow'
+type MockTemporalService_TerminateWorkflow_Call struct {
+	*mock.Call
+}
+
+// TerminateWorkflow is a helper method to define mock.On call
+//   - ctx context.Context
+//   - params models.TerminateWorkflowParams
+func (_e *MockTemporalService_Expecter) TerminateWorkflow(ctx interface{}, params interface{}) *MockTemporalService_TerminateWorkflow_Call {
+	return &MockTemporalService_TerminateWorkflow_Call{Call: _e.mock.On("TerminateWorkflow", ctx, params)}
+}
+
+func (_c *MockTemporalService_TerminateWorkflow_Call) Run(run func(ctx context.Context, params models.TerminateWorkflowParams)) *MockTemporalService_TerminateWorkflow_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(models.TerminateWorkflowParams))
+	})
+	return _c
+}
+
+func (_c *MockTemporalService_TerminateWorkflow_Call) Return(_a0 error) *MockTemporalService_TerminateWorkflow_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MockTemporalService_TerminateWorkflow_Call) RunAndReturn(run func(context.Context, models.TerminateWorkflowParams) error) *MockTemporalService_TerminateWorkflow_Call {
 	_c.Call.Return(run)
 	return _c
 }

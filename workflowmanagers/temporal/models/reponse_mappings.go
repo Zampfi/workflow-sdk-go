@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	historypb "go.temporal.io/api/history/v1"
 	v17 "go.temporal.io/api/workflow/v1"
+	"go.temporal.io/sdk/client"
 )
 
 func (ws *WorkflowExecutionDetails) FromDescribeWorkflowResponse(workflowExecutionInfo *v17.WorkflowExecutionInfo) {
@@ -27,4 +28,8 @@ func getWorkflowStatus(workflowExecutionInfo *v17.WorkflowExecutionInfo) string 
 
 func (e *Event) FromHistoryEvent(historyEvent *historypb.HistoryEvent) {
 	copier.Copy(e, historyEvent)
+}
+
+func (q *QueryWorkflowResponse) FromQueryWorkflowWithOptionsResponse(response *client.QueryWorkflowWithOptionsResponse) {
+	copier.Copy(q, response)
 }

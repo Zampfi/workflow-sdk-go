@@ -377,6 +377,110 @@ func (_c *MockClient_ListWorkflows_Call) RunAndReturn(run func(context.Context, 
 	return _c
 }
 
+// QueryWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockClient) QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error) {
+	ret := _m.Called(ctx, params)
+
+	if len(ret) == 0 {
+		panic("no return value specified for QueryWorkflow")
+	}
+
+	var r0 models.QueryWorkflowResponse
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)); ok {
+		return rf(ctx, params)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, models.QueryWorkflowParams) models.QueryWorkflowResponse); ok {
+		r0 = rf(ctx, params)
+	} else {
+		r0 = ret.Get(0).(models.QueryWorkflowResponse)
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, models.QueryWorkflowParams) error); ok {
+		r1 = rf(ctx, params)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// MockClient_QueryWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryWorkflow'
+type MockClient_QueryWorkflow_Call struct {
+	*mock.Call
+}
+
+// QueryWorkflow is a helper method to define mock.On call
+//   - ctx context.Context
+//   - params models.QueryWorkflowParams
+func (_e *MockClient_Expecter) QueryWorkflow(ctx interface{}, params interface{}) *MockClient_QueryWorkflow_Call {
+	return &MockClient_QueryWorkflow_Call{Call: _e.mock.On("QueryWorkflow", ctx, params)}
+}
+
+func (_c *MockClient_QueryWorkflow_Call) Run(run func(ctx context.Context, params models.QueryWorkflowParams)) *MockClient_QueryWorkflow_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(models.QueryWorkflowParams))
+	})
+	return _c
+}
+
+func (_c *MockClient_QueryWorkflow_Call) Return(_a0 models.QueryWorkflowResponse, _a1 error) *MockClient_QueryWorkflow_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *MockClient_QueryWorkflow_Call) RunAndReturn(run func(context.Context, models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)) *MockClient_QueryWorkflow_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SignalWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockClient) SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error {
+	ret := _m.Called(ctx, params)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SignalWorkflow")
+	}
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(context.Context, models.SignalWorkflowParams) error); ok {
+		r0 = rf(ctx, params)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// MockClient_SignalWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SignalWorkflow'
+type MockClient_SignalWorkflow_Call struct {
+	*mock.Call
+}
+
+// SignalWorkflow is a helper method to define mock.On call
+//   - ctx context.Context
+//   - params models.SignalWorkflowParams
+func (_e *MockClient_Expecter) SignalWorkflow(ctx interface{}, params interface{}) *MockClient_SignalWorkflow_Call {
+	return &MockClient_SignalWorkflow_Call{Call: _e.mock.On("SignalWorkflow", ctx, params)}
+}
+
+func (_c *MockClient_SignalWorkflow_Call) Run(run func(ctx context.Context, params models.SignalWorkflowParams)) *MockClient_SignalWorkflow_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(models.SignalWorkflowParams))
+	})
+	return _c
+}
+
+func (_c *MockClient_SignalWorkflow_Call) Return(_a0 error) *MockClient_SignalWorkflow_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MockClient_SignalWorkflow_Call) RunAndReturn(run func(context.Context, models.SignalWorkflowParams) error) *MockClient_SignalWorkflow_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // TerminateWorkflow provides a mock function with given fields: ctx, params
 func (_m *MockClient) TerminateWorkflow(ctx context.Context, params models.TerminateWorkflowParams) error {
 	ret := _m.Called(ctx, params)
