@@ -1,12 +1,12 @@
-package service
+package temporal
 
 import (
 	"context"
 	"fmt"
 	"testing"
 
-	clientmock "github.com/Zampfi/citadel/mocks/workflows/temporal/client"
-	"github.com/Zampfi/citadel/workflows/temporal/models"
+	clientmock "github.com/Zampfi/citadel/mocks/workflowmanagers/temporal/client"
+	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
@@ -61,14 +61,12 @@ func (s *temporalServiceTestSuite) TestTemporalService_StartAsyncTemporal() {
 	s.client.EXPECT().ExecuteAsyncWorkflow(ctx, params).Return(models.WorkflowResponse{
 		RunID:      "runID",
 		WorkflowID: "temporalID",
-		FirstRunID: "firstRunID",
 	}, nil)
 	resp, err := s.temporalService.ExecuteAsyncWorkflow(ctx, params)
 
 	s.NoError(err)
 	s.Equal(resp.RunID, "runID")
 	s.Equal(resp.WorkflowID, "temporalID")
-	s.Equal(resp.FirstRunID, "firstRunID")
 }
 
 func (s *temporalServiceTestSuite) TestTemporalService_StartSyncTemporal() {
@@ -84,12 +82,64 @@ func (s *temporalServiceTestSuite) TestTemporalService_StartSyncTemporal() {
 	s.client.EXPECT().ExecuteSyncWorkflow(ctx, params).Return(models.WorkflowResponse{
 		RunID:      "runID",
 		WorkflowID: "temporalID",
-		FirstRunID: "firstRunID",
 	}, nil)
 	resp, err := s.temporalService.ExecuteSyncWorkflow(ctx, params)
 
 	s.NoError(err)
 	s.Equal(resp.RunID, "runID")
 	s.Equal(resp.WorkflowID, "temporalID")
-	s.Equal(resp.FirstRunID, "firstRunID")
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_ListWorkflows() {
+	ctx := context.Background()
+	params := models.ListWorkflowsParams{
+		PageSize: 10,
+		Query:    "(WorkflowID = 'wid1' or (WorkflowType = 'type2' and WorkflowID = 'wid2'))",
+	}
+
+	s.client.EXPECT().ListWorkflows(ctx, params).Return(models.ListWorkflowsResponse{}, nil)
+	resp, err := s.temporalService.ListWorkflows(ctx, params)
+
+	s.NoError(err)
+	s.Equal(resp, models.ListWorkflowsResponse{})
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_GetWorkflowDetails() {
+	ctx := context.Background()
+	params := models.GetWorkflowDetailsParams{
+		WorkflowID: "wid",
+		RunID:      "rid",
+	}
+
+	s.client.EXPECT().GetWorkflowDetails(ctx, params).Return(models.WorkflowDetailsResponse{}, nil)
+	resp, err := s.temporalService.GetWorkflowDetails(ctx, params)
+
+	s.NoError(err)
+	s.Equal(resp, models.WorkflowDetailsResponse{})
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_TerminateWorkflow() {
+	ctx := context.Background()
+	params := models.TerminateWorkflowParams{
+		WorkflowID: "wid",
+		RunID:      "rid",
+		Reason:     "reason",
+		Details:    []interface{}{"details"},
+	}
+
+	s.client.EXPECT().TerminateWorkflow(ctx, params).Return(nil)
+	err := s.temporalService.TerminateWorkflow(ctx, params)
+	s.NoError(err)
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_CancelWorkflow() {
+	ctx := context.Background()
+	params := models.CancelWorkflowParams{
+		WorkflowID: "wid",
+		RunID:      "rid",
+	}
+
+	s.client.EXPECT().CancelWorkflow(ctx, params).Return(nil)
+	err := s.temporalService.CancelWorkflow(ctx, params)
+	s.NoError(err)
 }
