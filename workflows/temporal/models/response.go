@@ -2,7 +2,7 @@ package models
 
 // Output structs for each method
 
-type StartWorkflowResponse struct {
+type WorkflowResponse struct {
 	RunID      string
 	WorkflowID string
 	FirstRunID string

@@ -5,7 +5,7 @@ package mock_client
 import (
 	context "context"
 
-	models "github.com/Zampfi/citadel/workflows/models"
+	models "github.com/Zampfi/citadel/workflows/temporal/models"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -102,26 +102,26 @@ func (_c *MockClient_Connect_Call) RunAndReturn(run func(context.Context, models
 	return _c
 }
 
-// StartAsyncWorkflow provides a mock function with given fields: ctx, params
-func (_m *MockClient) StartAsyncWorkflow(ctx context.Context, params models.StartWorkflowParams) (models.StartWorkflowResponse, error) {
+// ExecuteAsyncWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockClient) ExecuteAsyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	ret := _m.Called(ctx, params)
 
 	if len(ret) == 0 {
-		panic("no return value specified for StartAsyncWorkflow")
+		panic("no return value specified for ExecuteAsyncWorkflow")
 	}
 
-	var r0 models.StartWorkflowResponse
+	var r0 models.WorkflowResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, models.StartWorkflowParams) (models.StartWorkflowResponse, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, models.ExecuteWorkflowParams) (models.WorkflowResponse, error)); ok {
 		return rf(ctx, params)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, models.StartWorkflowParams) models.StartWorkflowResponse); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, models.ExecuteWorkflowParams) models.WorkflowResponse); ok {
 		r0 = rf(ctx, params)
 	} else {
-		r0 = ret.Get(0).(models.StartWorkflowResponse)
+		r0 = ret.Get(0).(models.WorkflowResponse)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, models.StartWorkflowParams) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, models.ExecuteWorkflowParams) error); ok {
 		r1 = rf(ctx, params)
 	} else {
 		r1 = ret.Error(1)
@@ -130,55 +130,55 @@ func (_m *MockClient) StartAsyncWorkflow(ctx context.Context, params models.Star
 	return r0, r1
 }
 
-// MockClient_StartAsyncWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'StartAsyncWorkflow'
-type MockClient_StartAsyncWorkflow_Call struct {
+// MockClient_ExecuteAsyncWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ExecuteAsyncWorkflow'
+type MockClient_ExecuteAsyncWorkflow_Call struct {
 	*mock.Call
 }
 
-// StartAsyncWorkflow is a helper method to define mock.On call
+// ExecuteAsyncWorkflow is a helper method to define mock.On call
 //   - ctx context.Context
-//   - params models.StartWorkflowParams
-func (_e *MockClient_Expecter) StartAsyncWorkflow(ctx interface{}, params interface{}) *MockClient_StartAsyncWorkflow_Call {
-	return &MockClient_StartAsyncWorkflow_Call{Call: _e.mock.On("StartAsyncWorkflow", ctx, params)}
+//   - params models.ExecuteWorkflowParams
+func (_e *MockClient_Expecter) ExecuteAsyncWorkflow(ctx interface{}, params interface{}) *MockClient_ExecuteAsyncWorkflow_Call {
+	return &MockClient_ExecuteAsyncWorkflow_Call{Call: _e.mock.On("ExecuteAsyncWorkflow", ctx, params)}
 }
 
-func (_c *MockClient_StartAsyncWorkflow_Call) Run(run func(ctx context.Context, params models.StartWorkflowParams)) *MockClient_StartAsyncWorkflow_Call {
+func (_c *MockClient_ExecuteAsyncWorkflow_Call) Run(run func(ctx context.Context, params models.ExecuteWorkflowParams)) *MockClient_ExecuteAsyncWorkflow_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(models.StartWorkflowParams))
+		run(args[0].(context.Context), args[1].(models.ExecuteWorkflowParams))
 	})
 	return _c
 }
 
-func (_c *MockClient_StartAsyncWorkflow_Call) Return(_a0 models.StartWorkflowResponse, _a1 error) *MockClient_StartAsyncWorkflow_Call {
+func (_c *MockClient_ExecuteAsyncWorkflow_Call) Return(_a0 models.WorkflowResponse, _a1 error) *MockClient_ExecuteAsyncWorkflow_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *MockClient_StartAsyncWorkflow_Call) RunAndReturn(run func(context.Context, models.StartWorkflowParams) (models.StartWorkflowResponse, error)) *MockClient_StartAsyncWorkflow_Call {
+func (_c *MockClient_ExecuteAsyncWorkflow_Call) RunAndReturn(run func(context.Context, models.ExecuteWorkflowParams) (models.WorkflowResponse, error)) *MockClient_ExecuteAsyncWorkflow_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// StartSyncWorkflow provides a mock function with given fields: ctx, params
-func (_m *MockClient) StartSyncWorkflow(ctx context.Context, params models.StartWorkflowParams) (models.StartWorkflowResponse, error) {
+// ExecuteSyncWorkflow provides a mock function with given fields: ctx, params
+func (_m *MockClient) ExecuteSyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	ret := _m.Called(ctx, params)
 
 	if len(ret) == 0 {
-		panic("no return value specified for StartSyncWorkflow")
+		panic("no return value specified for ExecuteSyncWorkflow")
 	}
 
-	var r0 models.StartWorkflowResponse
+	var r0 models.WorkflowResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, models.StartWorkflowParams) (models.StartWorkflowResponse, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, models.ExecuteWorkflowParams) (models.WorkflowResponse, error)); ok {
 		return rf(ctx, params)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, models.StartWorkflowParams) models.StartWorkflowResponse); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, models.ExecuteWorkflowParams) models.WorkflowResponse); ok {
 		r0 = rf(ctx, params)
 	} else {
-		r0 = ret.Get(0).(models.StartWorkflowResponse)
+		r0 = ret.Get(0).(models.WorkflowResponse)
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, models.StartWorkflowParams) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, models.ExecuteWorkflowParams) error); ok {
 		r1 = rf(ctx, params)
 	} else {
 		r1 = ret.Error(1)
@@ -187,31 +187,31 @@ func (_m *MockClient) StartSyncWorkflow(ctx context.Context, params models.Start
 	return r0, r1
 }
 
-// MockClient_StartSyncWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'StartSyncWorkflow'
-type MockClient_StartSyncWorkflow_Call struct {
+// MockClient_ExecuteSyncWorkflow_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ExecuteSyncWorkflow'
+type MockClient_ExecuteSyncWorkflow_Call struct {
 	*mock.Call
 }
 
-// StartSyncWorkflow is a helper method to define mock.On call
+// ExecuteSyncWorkflow is a helper method to define mock.On call
 //   - ctx context.Context
-//   - params models.StartWorkflowParams
-func (_e *MockClient_Expecter) StartSyncWorkflow(ctx interface{}, params interface{}) *MockClient_StartSyncWorkflow_Call {
-	return &MockClient_StartSyncWorkflow_Call{Call: _e.mock.On("StartSyncWorkflow", ctx, params)}
+//   - params models.ExecuteWorkflowParams
+func (_e *MockClient_Expecter) ExecuteSyncWorkflow(ctx interface{}, params interface{}) *MockClient_ExecuteSyncWorkflow_Call {
+	return &MockClient_ExecuteSyncWorkflow_Call{Call: _e.mock.On("ExecuteSyncWorkflow", ctx, params)}
 }
 
-func (_c *MockClient_StartSyncWorkflow_Call) Run(run func(ctx context.Context, params models.StartWorkflowParams)) *MockClient_StartSyncWorkflow_Call {
+func (_c *MockClient_ExecuteSyncWorkflow_Call) Run(run func(ctx context.Context, params models.ExecuteWorkflowParams)) *MockClient_ExecuteSyncWorkflow_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(models.StartWorkflowParams))
+		run(args[0].(context.Context), args[1].(models.ExecuteWorkflowParams))
 	})
 	return _c
 }
 
-func (_c *MockClient_StartSyncWorkflow_Call) Return(_a0 models.StartWorkflowResponse, _a1 error) *MockClient_StartSyncWorkflow_Call {
+func (_c *MockClient_ExecuteSyncWorkflow_Call) Return(_a0 models.WorkflowResponse, _a1 error) *MockClient_ExecuteSyncWorkflow_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *MockClient_StartSyncWorkflow_Call) RunAndReturn(run func(context.Context, models.StartWorkflowParams) (models.StartWorkflowResponse, error)) *MockClient_StartSyncWorkflow_Call {
+func (_c *MockClient_ExecuteSyncWorkflow_Call) RunAndReturn(run func(context.Context, models.ExecuteWorkflowParams) (models.WorkflowResponse, error)) *MockClient_ExecuteSyncWorkflow_Call {
 	_c.Call.Return(run)
 	return _c
 }

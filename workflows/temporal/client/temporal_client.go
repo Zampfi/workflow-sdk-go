@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/Zampfi/citadel/workflows/models"
+	"github.com/Zampfi/citadel/workflows/temporal/models"
 	"go.temporal.io/sdk/client"
 )
 
@@ -20,30 +20,30 @@ func (tc *TemporalClient) Connect(ctx context.Context, params models.ConnectClie
 	return nil
 }
 
-func (tc *TemporalClient) StartAsyncWorkflow(ctx context.Context, params models.StartWorkflowParams) (models.StartWorkflowResponse, error) {
+func (tc *TemporalClient) ExecuteAsyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	wr, err := tc.baseTemporalClient.ExecuteWorkflow(ctx, params.ToTemporalStartWorkflowOptions(), params.Workflow, params.Args...)
 	if err != nil {
-		return models.StartWorkflowResponse{}, err
+		return models.WorkflowResponse{}, err
 	}
-	return models.StartWorkflowResponse{
+	return models.WorkflowResponse{
 		RunID:      wr.GetRunID(),
 		WorkflowID: wr.GetID(),
 		FirstRunID: wr.GetRunID(),
 	}, nil
 }
 
-func (tc *TemporalClient) StartSyncWorkflow(ctx context.Context, params models.StartWorkflowParams) (models.StartWorkflowResponse, error) {
+func (tc *TemporalClient) ExecuteSyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	wr, err := tc.baseTemporalClient.ExecuteWorkflow(ctx, params.ToTemporalStartWorkflowOptions(), params.Workflow, params.Args...)
 	if err != nil {
-		return models.StartWorkflowResponse{}, err
+		return models.WorkflowResponse{}, err
 	}
 
 	err = wr.Get(ctx, params.ResultPtr)
 	if err != nil {
-		return models.StartWorkflowResponse{}, err
+		return models.WorkflowResponse{}, err
 	}
 
-	return models.StartWorkflowResponse{
+	return models.WorkflowResponse{
 		RunID:      wr.GetRunID(),
 		WorkflowID: wr.GetID(),
 		FirstRunID: wr.GetRunID(),

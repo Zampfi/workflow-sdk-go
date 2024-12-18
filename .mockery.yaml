@@ -3,8 +3,8 @@ with-expecter: True
 filename: "{{ .InterfaceName | snakecase }}.go"
 outpkg: "mock_{{.PackageName}}"
 packages:
-  github.com/Zampfi/citadel/workflows/client:
+  github.com/Zampfi/citadel:
     config:
-      dir: "mocks"
+      dir: "mocks/{{.InterfaceDirRelative}}"
       all: True
       recursive: True

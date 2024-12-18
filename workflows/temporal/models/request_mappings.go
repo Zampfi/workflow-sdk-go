@@ -11,7 +11,7 @@ func (c *ConnectClientParams) ToTemporalClientOptions() client.Options {
 	return options
 }
 
-func (s *StartWorkflowParams) ToTemporalStartWorkflowOptions() client.StartWorkflowOptions {
+func (s *ExecuteWorkflowParams) ToTemporalStartWorkflowOptions() client.StartWorkflowOptions {
 	options := client.StartWorkflowOptions{}
 	copier.Copy(&options, s.Options)
 	return options
