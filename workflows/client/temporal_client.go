@@ -38,7 +38,7 @@ func (tc *TemporalClient) StartSyncWorkflow(ctx context.Context, params models.S
 		return models.StartWorkflowResponse{}, err
 	}
 
-	err = wr.Get(ctx, nil)
+	err = wr.Get(ctx, params.ResultPtr)
 	if err != nil {
 		return models.StartWorkflowResponse{}, err
 	}

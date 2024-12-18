@@ -11,9 +11,10 @@ type ConnectClientParams struct {
 type ConnectClientOptions = client.Options
 
 type StartWorkflowParams struct {
-	Options  StartWorkflowOptions
-	Workflow interface{}
-	Args     []interface{}
+	Options   StartWorkflowOptions
+	Workflow  interface{}
+	Args      []interface{}
+	ResultPtr interface{}
 }
 
 type StartWorkflowOptions = client.StartWorkflowOptions
