@@ -6,6 +6,7 @@ import (
 
 	"github.com/Zampfi/citadel/workflowmanagers/temporal/client"
 	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	worker "github.com/Zampfi/citadel/workflowmanagers/temporal/worker"
 )
 
 type TemporalService interface {
@@ -18,6 +19,7 @@ type TemporalService interface {
 	CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error
 	SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error
 	QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)
+	GetNewWorker(ctx context.Context, params models.NewWorkerParams) (worker.Worker, error)
 	Close(ctx context.Context)
 }
 
@@ -89,4 +91,8 @@ func (ts *temporalService) SignalWorkflow(ctx context.Context, params models.Sig
 
 func (ts *temporalService) QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error) {
 	return ts.client.QueryWorkflow(ctx, params)
+}
+
+func (ts *temporalService) GetNewWorker(ctx context.Context, params models.NewWorkerParams) (worker.Worker, error) {
+	return worker.NewWorker(ctx, ts.client.(*client.TemporalClient), params)
 }

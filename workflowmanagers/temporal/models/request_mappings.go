@@ -5,6 +5,7 @@ import (
 	"go.temporal.io/api/enums/v1"
 	"go.temporal.io/api/workflowservice/v1"
 	"go.temporal.io/sdk/client"
+	temporalworker "go.temporal.io/sdk/worker"
 )
 
 func (c *ConnectClientParams) ToTemporalClientOptions() client.Options {
@@ -31,4 +32,10 @@ func (s *QueryWorkflowParams) ToTemporalQueryWorkflowWithOptionsRequest() *clien
 	request := &client.QueryWorkflowWithOptionsRequest{}
 	copier.Copy(&request, s)
 	return request
+}
+
+func (s *NewWorkerParams) ToTemporalWorkerOptions() temporalworker.Options {
+	options := temporalworker.Options{}
+	copier.Copy(&options, s.Options)
+	return options
 }

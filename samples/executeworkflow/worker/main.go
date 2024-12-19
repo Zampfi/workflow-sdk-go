@@ -1,27 +1,48 @@
 package main
 
 import (
+	"context"
 	"log"
 
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/worker"
-
 	sampleworkflow "github.com/Zampfi/citadel/samples/executeworkflow/sampleworkflow"
+	"github.com/Zampfi/citadel/workflowmanagers/temporal"
+	"github.com/Zampfi/citadel/workflowmanagers/temporal/activity"
+	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	"github.com/Zampfi/citadel/workflowmanagers/temporal/workflow"
+	"go.temporal.io/sdk/worker"
 )
 
 func main() {
-	// The client and worker are heavyweight objects that should be created once per process.
-	c, err := client.Dial(client.Options{})
+	ctx := context.Background()
+	temporalService := temporal.NewTemporalService()
+	err := temporalService.Connect(ctx, models.ConnectClientParams{})
 	if err != nil {
-		log.Fatalln("Unable to create client", err)
+		panic(err)
 	}
-	defer c.Close()
 
-	w := worker.New(c, "test_execute", worker.Options{})
+	w, err := temporalService.GetNewWorker(ctx, models.NewWorkerParams{
+		TaskQueue: "test_execute",
+		Workflows: []workflow.Workflow{
+			{
+				Function: sampleworkflow.SampleWorkflow,
+			},
+		},
+		Activities: []activity.Activity{
+			{
+				Function: sampleworkflow.SampleActivity,
+			},
+		},
+		RegisterTasks: true,
+		Options: worker.Options{
+			WorkerActivitiesPerSecond: 10,
+		},
+	})
 
-	w.RegisterWorkflow(sampleworkflow.SampleWorkflow)
+	if err != nil {
+		log.Fatalln("Unable to create worker", err)
+	}
 
-	err = w.Run(worker.InterruptCh())
+	err = w.Run(ctx, worker.InterruptCh(), models.RunWorkerParams{})
 	if err != nil {
 		log.Fatalln("Unable to start worker", err)
 	}

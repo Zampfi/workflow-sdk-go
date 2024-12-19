@@ -12,6 +12,10 @@ type TemporalClient struct {
 	baseTemporalClient client.Client
 }
 
+func (tc *TemporalClient) GetBaseClient() client.Client {
+	return tc.baseTemporalClient
+}
+
 func (tc *TemporalClient) Connect(ctx context.Context, params models.ConnectClientParams) error {
 	newClient, err := client.Dial(params.ToTemporalClientOptions())
 	if err != nil {

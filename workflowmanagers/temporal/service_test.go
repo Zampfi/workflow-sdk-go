@@ -7,8 +7,10 @@ import (
 
 	clientmock "github.com/Zampfi/citadel/mocks/workflowmanagers/temporal/client"
 	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
+	temporalworkflow "go.temporal.io/sdk/workflow"
 )
 
 type temporalServiceTestSuite struct {
@@ -43,9 +45,14 @@ func (s *temporalServiceTestSuite) TestTemporalService_Connect() {
 	s.NoError(err)
 }
 
-func SampleTemporal(ctx context.Context, arg1 string) error {
+func SampleWorkflow(ctx temporalworkflow.Context, arg1 string) error {
 	fmt.Printf("Running temporal with arg1: %s\n", arg1)
 	return nil
+}
+
+func SampleActivity(ctx context.Context, arg1 string) (string, error) {
+	fmt.Printf("Running activity with arg1: %s\n", arg1)
+	return "activity", nil
 }
 
 func (s *temporalServiceTestSuite) TestTemporalService_StartAsyncTemporal() {
@@ -169,4 +176,10 @@ func (s *temporalServiceTestSuite) TestTemporalService_QueryWorkflow() {
 
 	s.NoError(err)
 	s.Equal(resp, models.QueryWorkflowResponse{})
+}
+
+func (s *temporalServiceTestSuite) TestTemporalService_Close() {
+	ctx := context.Background()
+	s.client.EXPECT().Close(ctx)
+	s.temporalService.Close(ctx)
 }
