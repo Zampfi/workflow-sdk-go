@@ -4,12 +4,11 @@ import (
 	"context"
 	"log"
 
-	"go.temporal.io/sdk/worker"
-
-	sampleworkflow "github.com/Zampfi/citadel/samples/list/sampleworkflow"
+	signalsampleworkflow "github.com/Zampfi/citadel/samples/signal/sampleworkflow"
 	"github.com/Zampfi/citadel/workflowmanagers/temporal"
 	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
 	"github.com/Zampfi/citadel/workflowmanagers/temporal/workflow"
+	"go.temporal.io/sdk/worker"
 )
 
 func main() {
@@ -21,10 +20,10 @@ func main() {
 	}
 
 	w, err := temporalService.GetNewWorker(ctx, models.NewWorkerParams{
-		TaskQueue: "test_execute",
+		TaskQueue: "signal-queue",
 		Workflows: []workflow.Workflow{
 			{
-				Function: sampleworkflow.SampleWorkflow,
+				Function: signalsampleworkflow.SampleSignalWorkflow,
 			},
 		},
 		RegisterTasks: true,
