@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	clientmock "github.com/Zampfi/citadel/mocks/workflowmanagers/temporal/client"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	clientmock "github.com/Zampfi/workflow/sdk/mocks/workflowmanagers/temporal/client"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"

@@ -1,0 +1,37 @@
+ci:
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autofix_commit_msg: "style: pre-commit fixes"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v1.42.1
+    hooks:
+      - id: golangci-lint
+
+  - repo: https://github.com/securego/gosec
+    rev: v2.9.1
+    hooks:
+      - id: gosec
+
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: v1.5.0
+    hooks:
+      - id: go-fmt
+      - id: go-imports
+      - id: go-vet
+      - id: golint
+      - id: go-mod-tidy
+      - id: go-test

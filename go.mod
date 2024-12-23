@@ -1,4 +1,4 @@
-module github.com/Zampfi/citadel
+module github.com/Zampfi/workflow/sdk
 
 go 1.21.2
 

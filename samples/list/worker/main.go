@@ -6,10 +6,10 @@ import (
 
 	"go.temporal.io/sdk/worker"
 
-	sampleworkflow "github.com/Zampfi/citadel/samples/list/sampleworkflow"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/workflow"
+	sampleworkflow "github.com/Zampfi/workflow/sdk/samples/list/sampleworkflow"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/workflow"
 )
 
 func main() {

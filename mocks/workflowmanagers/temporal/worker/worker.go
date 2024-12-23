@@ -5,7 +5,7 @@ package mock_worker
 import (
 	context "context"
 
-	models "github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	models "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

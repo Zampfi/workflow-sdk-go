@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
 	"go.temporal.io/api/enums/v1"
 	"go.temporal.io/sdk/client"
 )

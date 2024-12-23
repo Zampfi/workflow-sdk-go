@@ -1,0 +1,74 @@
+# .golangci.yml
+run:
+  # List of enabled linters. By default, all linters are enabled.
+  # You can enable/disable linters using the `enable` and `disable` options.
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - gosimple
+    - unused
+    - structcheck
+    - varcheck
+    - deadcode
+    - ineffassign
+    - typecheck
+    - gofmt
+    - goimports
+    - golint
+    - gocyclo
+    - dupl
+    - unparam
+    - scopelint
+    - goconst
+    - gocritic
+    - gosec
+    - misspell
+    - nakedret
+    - prealloc
+    - rowserrcheck
+    - stylecheck
+    - unconvert
+    - whitespace
+
+linters-settings:
+  govet:
+    check-shadowing: true
+  gocyclo:
+    min-complexity: 15
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/Zampfi/workflow/sdk
+  golint:
+    min-confidence: 0.8
+  misspell:
+    locale: US
+  prealloc:
+    simple: true
+  rowserrcheck:
+    check-return: true
+  unparam:
+    check-exported: true
+
+issues:
+  exclude-use-default: false
+  exclude:
+    - "SA1019" # Ignore deprecated errors
+    - "ST1005" # Ignore capitalized errors
+
+output:
+  format: colored-line-number
+  sort-results: true
+  print-issued-lines: true
+  print-linter-name: true
+  uniq-by-line: true
+  severity: error
+
+# Optional: You can specify directories to include or exclude
+# include:
+#   - "cmd/"
+#   - "pkg/"
+exclude:
+  - "vendor/"
+  - "third_party/"

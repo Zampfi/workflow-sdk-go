@@ -4,9 +4,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/client"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
-	worker "github.com/Zampfi/citadel/workflowmanagers/temporal/worker"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/client"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
+	worker "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/worker"
 )
 
 type TemporalService interface {

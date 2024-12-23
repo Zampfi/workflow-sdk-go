@@ -58,3 +58,26 @@ This repository includes a `samples` package that provides examples for various 
 
 These examples demonstrate how to integrate and use the SDK in real-world scenarios.
 
+
+## Making a release
+
+1. Pull `main`.
+2. Add a git tag with a bumped version as per your change. If the current latest tag is v1.1.50, tag the latest commit on `main` with `v1.1.51`.
+   
+    ```
+    # example: git tag v1.1.51
+    git tag <version>
+    ```
+3. Push the tag
+   
+   ```
+   git push origin v1.1.51
+   ```
+
+## Using citadel in other repos
+
+1. `go get` the latest version from the go project that you wish to use citadel in.
+
+   ```
+   go get github.com/Zampfi/workflow/sdk@v1.1.50
+   ```

@@ -4,11 +4,11 @@ import (
 	"context"
 	"log"
 
-	sampleworkflow "github.com/Zampfi/citadel/samples/executeworkflow/sampleworkflow"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/activity"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/workflow"
+	sampleworkflow "github.com/Zampfi/workflow/sdk/samples/executeworkflow/sampleworkflow"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/activity"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/workflow"
 	"go.temporal.io/sdk/worker"
 )
 

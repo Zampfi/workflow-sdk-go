@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
 )
 
 type Client interface {

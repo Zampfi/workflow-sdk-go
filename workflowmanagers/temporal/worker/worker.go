@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 
-	activity "github.com/Zampfi/citadel/workflowmanagers/temporal/activity"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/client"
-	"github.com/Zampfi/citadel/workflowmanagers/temporal/models"
-	workflow "github.com/Zampfi/citadel/workflowmanagers/temporal/workflow"
+	activity "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/activity"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/client"
+	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
+	workflow "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/workflow"
 	temporalworker "go.temporal.io/sdk/worker"
 )
 
