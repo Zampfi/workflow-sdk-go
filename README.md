@@ -1,8 +1,8 @@
-# Citadel-Go SDK
+# Workflow-go
 
 ## Overview
 
-The **Citadel-Go SDK** simplifies interaction with Temporal workflows, providing easy-to-use methods for managing workflows, activities, and workers.
+The **workflow-go SDK** simplifies interaction with Temporal workflows, providing easy-to-use methods for managing workflows, activities, and workers.
 
 ## Setting Up Temporal Locally
 
@@ -25,7 +25,7 @@ Follow these steps to set up Temporal on your local environment:
 
    This will start the Temporal server using Docker Compose.
 
-## Getting Started with Citadel-Go SDK
+## Getting Started with workflow-go SDK
 
 ### Prerequisites
 
@@ -37,7 +37,7 @@ Ensure you have the following installed:
 
 Add the SDK to your project using `go get`:
 ```bash
-go get github.com/yourusername/citadel-go
+go get github.com/Zampfi/workflow/sdk
 ```
 ## Features
 
@@ -74,9 +74,9 @@ These examples demonstrate how to integrate and use the SDK in real-world scenar
    git push origin v1.1.51
    ```
 
-## Using citadel in other repos
+## Using workflow-go sdk in other repos
 
-1. `go get` the latest version from the go project that you wish to use citadel in.
+1. `go get` the latest version from the go project that you wish to use workflow-go sdk in.
 
    ```
    go get github.com/Zampfi/workflow/sdk@v1.1.50
