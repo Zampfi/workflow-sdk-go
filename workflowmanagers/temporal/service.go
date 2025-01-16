@@ -11,6 +11,7 @@ import (
 
 type TemporalService interface {
 	Connect(ctx context.Context, params models.ConnectClientParams) error
+	ExecuteScheduledWorkflow(ctx context.Context, params models.ExecuteWorkflowWithScheduleParams) (models.ScheduledWorkflowResponse, error)
 	ExecuteAsyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error)
 	ExecuteSyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error)
 	ListWorkflows(ctx context.Context, params models.ListWorkflowsParams) (models.ListWorkflowsResponse, error)
@@ -19,6 +20,7 @@ type TemporalService interface {
 	CancelWorkflow(ctx context.Context, params models.CancelWorkflowParams) error
 	SignalWorkflow(ctx context.Context, params models.SignalWorkflowParams) error
 	QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error)
+	QuerySchedule(ctx context.Context, params models.QueryScheduleParams) (models.QueryScheduleResponse, error)
 	GetNewWorker(ctx context.Context, params models.NewWorkerParams) (worker.Worker, error)
 	Close(ctx context.Context)
 }
@@ -57,6 +59,10 @@ func (ts *temporalService) Connect(ctx context.Context, params models.ConnectCli
 	return nil
 }
 
+func (ts *temporalService) ExecuteScheduledWorkflow(ctx context.Context, params models.ExecuteWorkflowWithScheduleParams) (models.ScheduledWorkflowResponse, error) {
+	return ts.client.ExecuteScheduledWorkflow(ctx, params)
+}
+
 func (ts *temporalService) ExecuteAsyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	return ts.client.ExecuteAsyncWorkflow(ctx, params)
 }
@@ -91,6 +97,10 @@ func (ts *temporalService) SignalWorkflow(ctx context.Context, params models.Sig
 
 func (ts *temporalService) QueryWorkflow(ctx context.Context, params models.QueryWorkflowParams) (models.QueryWorkflowResponse, error) {
 	return ts.client.QueryWorkflow(ctx, params)
+}
+
+func (ts *temporalService) QuerySchedule(ctx context.Context, params models.QueryScheduleParams) (models.QueryScheduleResponse, error) {
+	return ts.client.QuerySchedule(ctx, params)
 }
 
 func (ts *temporalService) GetNewWorker(ctx context.Context, params models.NewWorkerParams) (worker.Worker, error) {

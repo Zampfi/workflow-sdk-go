@@ -21,6 +21,12 @@ type ExecuteWorkflowParams struct {
 	ResultPtr interface{}
 }
 
+type ScheduleOptions = client.ScheduleOptions
+
+type ExecuteWorkflowWithScheduleParams struct {
+	ScheduleOptions ScheduleOptions
+}
+
 type StartWorkflowOptions = client.StartWorkflowOptions
 
 type GetWorkflowDetailsParams struct {
@@ -61,6 +67,10 @@ type QueryWorkflowParams struct {
 	Args                 []interface{}
 	QueryRejectCondition enumspb.QueryRejectCondition
 	Header               *commonpb.Header
+}
+
+type QueryScheduleParams struct {
+	ScheduleID string
 }
 
 type NewWorkerParams struct {

@@ -46,4 +46,5 @@ func main() {
 	if err != nil {
 		log.Fatalln("Unable to start worker", err)
 	}
+
 }
