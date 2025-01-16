@@ -1,8 +1,8 @@
 package models
 
 import (
-	activity "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/activity"
-	workflow "github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/workflow"
+	activity "github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/activity"
+	workflow "github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/workflow"
 	commonpb "go.temporal.io/api/common/v1"
 	enumspb "go.temporal.io/api/enums/v1"
 	"go.temporal.io/sdk/client"

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	signalsampleworkflow "github.com/Zampfi/workflow/sdk/samples/signal/sampleworkflow"
-	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal"
-	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/models"
+	signalsampleworkflow "github.com/Zampfi/workflow-sdk-go/sdk/samples/signal/sampleworkflow"
+	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal"
+	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/models"
 )
 
 func main() {

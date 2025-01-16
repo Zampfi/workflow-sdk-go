@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/Zampfi/workflow/sdk/workflowmanagers/temporal/constants"
+	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/constants"
 	"github.com/jinzhu/copier"
 	historypb "go.temporal.io/api/history/v1"
 	v17 "go.temporal.io/api/workflow/v1"
