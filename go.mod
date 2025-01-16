@@ -6,8 +6,8 @@ require (
 	github.com/jinzhu/copier v0.4.0
 	github.com/lithammer/shortuuid v3.0.0+incompatible
 	github.com/stretchr/testify v1.10.0
-	go.temporal.io/api v1.43.0
-	go.temporal.io/sdk v1.31.0
+	go.temporal.io/api v1.43.1
+	go.temporal.io/sdk v1.32.1
 )
 
 require (
