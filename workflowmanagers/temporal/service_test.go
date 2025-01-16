@@ -55,6 +55,19 @@ func SampleActivity(ctx context.Context, arg1 string) (string, error) {
 	return "activity", nil
 }
 
+func (s *temporalServiceTestSuite) TestTemporalService_QuerySchedule() {
+	ctx := context.Background()
+	params := models.QueryScheduleParams{
+		ScheduleID: "ScheduleID",
+	}
+
+	s.client.EXPECT().QuerySchedule(ctx, params).Return(models.QueryScheduleResponse{}, nil)
+	resp, err := s.temporalService.QuerySchedule(ctx, params)
+
+	s.NoError(err)
+	s.Equal(resp, models.QueryScheduleResponse{})
+}
+
 func (s *temporalServiceTestSuite) TestTemporalService_StartAsyncTemporal() {
 	ctx := context.Background()
 	params := models.ExecuteWorkflowParams{

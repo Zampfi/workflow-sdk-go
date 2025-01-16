@@ -25,6 +25,21 @@ func (tc *TemporalClient) Connect(ctx context.Context, params models.ConnectClie
 	return nil
 }
 
+func (tc *TemporalClient) ExecuteScheduledWorkflow(ctx context.Context, params models.ExecuteWorkflowWithScheduleParams) (models.ScheduledWorkflowResponse, error) {
+	scheduleHandle, err := tc.baseTemporalClient.ScheduleClient().Create(
+		ctx,
+		params.ScheduleOptions,
+	)
+
+	if err != nil {
+		return models.ScheduledWorkflowResponse{}, err
+	}
+
+	return models.ScheduledWorkflowResponse{
+		ScheduleID: scheduleHandle.GetID(),
+	}, nil
+}
+
 func (tc *TemporalClient) ExecuteAsyncWorkflow(ctx context.Context, params models.ExecuteWorkflowParams) (models.WorkflowResponse, error) {
 	wr, err := tc.baseTemporalClient.ExecuteWorkflow(ctx, params.ToTemporalStartWorkflowOptions(), params.Workflow, params.Args...)
 	if err != nil {
@@ -156,4 +171,12 @@ func (tc *TemporalClient) QueryWorkflow(ctx context.Context, params models.Query
 	response := models.QueryWorkflowResponse{}
 	response.FromQueryWorkflowWithOptionsResponse(queryResponse)
 	return response, nil
+}
+
+func (tc *TemporalClient) QuerySchedule(ctx context.Context, params models.QueryScheduleParams) (models.QueryScheduleResponse, error) {
+	scheduleDescription, err := tc.baseTemporalClient.ScheduleClient().GetHandle(ctx, params.ScheduleID).Describe(ctx)
+	if err != nil {
+		return models.QueryScheduleResponse{}, err
+	}
+	return models.QueryScheduleResponse{ScheduleDescription: *scheduleDescription}, nil
 }

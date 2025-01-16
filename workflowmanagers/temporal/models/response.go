@@ -6,6 +6,10 @@ import (
 	"go.temporal.io/sdk/client"
 )
 
+type ScheduledWorkflowResponse struct {
+	ScheduleID string
+}
+
 type WorkflowResponse struct {
 	RunID      string
 	WorkflowID string
@@ -40,4 +44,8 @@ type ListWorkflowsResponse struct {
 
 type QueryWorkflowResponse struct {
 	client.QueryWorkflowWithOptionsResponse
+}
+
+type QueryScheduleResponse struct {
+	client.ScheduleDescription
 }
