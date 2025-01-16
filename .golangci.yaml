@@ -39,7 +39,7 @@ linters-settings:
   gofmt:
     simplify: true
   goimports:
-    local-prefixes: github.com/Zampfi/workflow-sdk-go/sdk
+    local-prefixes: github.com/Zampfi/workflow-sdk-go
   golint:
     min-confidence: 0.8
   misspell:

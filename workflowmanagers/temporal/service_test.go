@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	clientmock "github.com/Zampfi/workflow-sdk-go/sdk/mocks/workflowmanagers/temporal/client"
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/models"
+	clientmock "github.com/Zampfi/workflow-sdk-go/mocks/workflowmanagers/temporal/client"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal/models"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"

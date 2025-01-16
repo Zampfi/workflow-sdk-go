@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal"
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal/models"
 	"github.com/lithammer/shortuuid"
 	temporalmain "go.temporal.io/sdk/temporal"
 )

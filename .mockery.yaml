@@ -3,7 +3,7 @@ with-expecter: True
 filename: "{{ .InterfaceName | snakecase }}.go"
 outpkg: "mock_{{.PackageName}}"
 packages:
-  github.com/Zampfi/workflow-sdk-go/sdk:
+  github.com/Zampfi/workflow-sdk-go:
     config:
       dir: "mocks/{{.InterfaceDirRelative}}"
       all: True

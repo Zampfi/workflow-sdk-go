@@ -37,7 +37,7 @@ Ensure you have the following installed:
 
 Add the SDK to your project using `go get`:
 ```bash
-go get github.com/Zampfi/workflow-sdk-go/sdk
+go get github.com/Zampfi/workflow-sdk-go
 ```
 ## Features
 
@@ -79,5 +79,5 @@ These examples demonstrate how to integrate and use the SDK in real-world scenar
 1. `go get` the latest version from the go project that you wish to use workflow-go sdk in.
 
    ```
-   go get github.com/Zampfi/workflow-sdk-go/sdk@v1.1.50
+   go get github.com/Zampfi/workflow-sdk-go@v1.1.50
    ```

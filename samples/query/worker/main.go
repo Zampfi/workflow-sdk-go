@@ -4,10 +4,10 @@ import (
 	"context"
 	"log"
 
-	querysampleworkflow "github.com/Zampfi/workflow-sdk-go/sdk/samples/query/sampleworkflow"
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal"
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/models"
-	"github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/workflow"
+	querysampleworkflow "github.com/Zampfi/workflow-sdk-go/samples/query/sampleworkflow"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal/models"
+	"github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal/workflow"
 	"go.temporal.io/sdk/worker"
 )
 

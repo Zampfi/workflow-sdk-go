@@ -5,7 +5,7 @@ package mock_worker
 import (
 	context "context"
 
-	models "github.com/Zampfi/workflow-sdk-go/sdk/workflowmanagers/temporal/models"
+	models "github.com/Zampfi/workflow-sdk-go/workflowmanagers/temporal/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

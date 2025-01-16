@@ -1,4 +1,4 @@
-module github.com/Zampfi/workflow-sdk-go/sdk
+module github.com/Zampfi/workflow-sdk-go
 
 go 1.23.4
 
